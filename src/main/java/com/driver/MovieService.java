@@ -10,11 +10,7 @@ import java.util.*;
 public class MovieService {
 
     @Autowired
-    private MovieRepository movieRepository;
-
-    public MovieService(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
+    MovieRepository movieRepository;
 
     public ResponseEntity<String> addMovie(Movie movie) {
         movieRepository.addMovie(movie);

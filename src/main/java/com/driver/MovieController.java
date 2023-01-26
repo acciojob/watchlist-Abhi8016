@@ -10,11 +10,7 @@ import java.util.*;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
-
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
-    }
+    MovieService movieService;
 
     @PostMapping("/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody Movie movie) {
