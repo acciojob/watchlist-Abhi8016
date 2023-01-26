@@ -6,6 +6,7 @@ public class Movie {
     private int durationInMinutes;
     private double imdbRating;
 
+
     public Movie(){
 
     }
