@@ -34,21 +34,37 @@ public class MovieRepository {
         return directors.get(name);
     }
 
-    public List<String> getMoviesByDirectorName(String directorName) {
-        return movieDirectorPairs.getOrDefault(directorName, new ArrayList<>());
+    public List<String> getMoviesByDirectorName(String director){
+        List<String> movies = new ArrayList<>();
+        for(Map.Entry<String, List<String>> entry : movieDirectorPairs.entrySet()){
+            if(entry.getValue().equals(director)){
+                movies.add(entry.getKey());
+            }
+        }
+        return movies;
     }
 
     public List<String> findAllMovies() {
         return new ArrayList<>(movies.keySet());
     }
 
-    public void deleteDirectorByName(String directorName) {
-        directors.remove(directorName);
-        movieDirectorPairs.remove(directorName);
+    public void deleteDirectorByName(String name){
+        directors.remove(name);
+        List<String> moviesToRemove = new ArrayList<>();
+        for(Map.Entry<String, List<String>> entry : movieDirectorPairs.entrySet()){
+            if(entry.getValue().equals(name)){
+                moviesToRemove.add(entry.getKey());
+            }
+        }
+        for(String movie : moviesToRemove){
+            movies.remove(movie);
+            movieDirectorPairs.remove(movie);
+        }
     }
 
     public void deleteAllDirectors() {
         directors.clear();
+        movies.clear();
         movieDirectorPairs.clear();
     }
 
