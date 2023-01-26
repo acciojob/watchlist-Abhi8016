@@ -64,7 +64,7 @@ public class MovieRepository {
 
     public void deleteAllDirectors() {
         directors.clear();
-        movies.clear();
+        //movies.clear();
         movieDirectorPairs.clear();
     }
 
